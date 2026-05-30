@@ -1,0 +1,12 @@
+# Python dependencies for this project, pinned to compatible major versions.
+#
+# Why pin? So `pip install -r requirements.txt` gives you (and a future
+# deploy target) the same versions we tested against. We pin loosely with
+# `>=X,<Y` so security patches still come through.
+
+# The web framework itself. Flask 3 is the current major line.
+Flask>=3.0,<4.0
+
+# Loads a local .env file into os.environ. Flask picks this up automatically
+# if it's installed, so you don't need to `export FLASK_APP=...` by hand.
+python-dotenv>=1.0,<2.0

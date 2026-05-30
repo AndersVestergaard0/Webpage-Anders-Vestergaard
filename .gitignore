@@ -1,0 +1,28 @@
+# --- Secrets and environment ---------------------------------------------
+# The real .env holds secrets (DB passwords, SECRET_KEY) and MUST NOT be
+# committed. We commit .env.example instead — a template with no real values.
+.env
+.env.*
+!.env.example
+
+# --- Per-deployment data --------------------------------------------------
+# Flask's `instance/` folder is for files specific to a single deployment:
+# the dev SQLite database, local-only config overrides, etc.
+instance/
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# --- Virtual environments ---------------------------------------------------
+.venv/
+venv/
+env/
+
+# --- Editors / OS ----------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
