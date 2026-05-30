@@ -1,0 +1,35 @@
+{# Partial template — one project card. The leading underscore is a
+   convention meaning "not a standalone page, only included from elsewhere".
+
+   Expects a `project` variable in context (set by the {% for %} loop in
+   projects.html). #}
+<li class="project-card">
+  <h2 class="project-title">{{ project.title }}</h2>
+
+  <p class="project-summary">{{ project.summary }}</p>
+
+  {# Tags are rendered as small inline pills. Only render the list if there
+     are any — skip the whole <ul> when tags is empty/missing. #}
+  {% if project.tags %}
+    <ul class="project-tags">
+      {% for tag in project.tags %}
+        <li class="tag">{{ tag }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {# Links row. Each link is optional — we only render it if a URL exists. #}
+  {% if project.repo_url or project.live_url %}
+    <p class="project-links">
+      {% if project.repo_url %}
+        {# `rel="noopener"` blocks the new tab from reaching back into our
+           window via window.opener — a small but real security habit when
+           you open external links in a new tab. #}
+        <a href="{{ project.repo_url }}" target="_blank" rel="noopener">Source</a>
+      {% endif %}
+      {% if project.live_url %}
+        <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live</a>
+      {% endif %}
+    </p>
+  {% endif %}
+</li>

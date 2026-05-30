@@ -1,0 +1,43 @@
+{# Base layout. Every page extends this template and overrides the `title`
+   and `content` blocks. Anything outside those blocks (nav, footer, head)
+   stays consistent across the whole site. #}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {# `block title` lets each page set its own <title> by overriding it. #}
+  <title>{% block title %}Anders Vestergaard{% endblock %}</title>
+
+  {# `url_for('static', filename=...)` builds /static/css/site.css. We use
+     it (instead of hard-coding the path) so that if Flask is ever mounted
+     under a sub-path like /portfolio/, the URL still resolves correctly. #}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('main.home') }}">Anders Vestergaard</a>
+
+    {# Navigation. As we add blueprints (blog, contact) we'll add nav items
+       here. Each link uses url_for so renaming a route doesn't break the nav. #}
+    <nav class="site-nav">
+      <a href="{{ url_for('main.home') }}">Home</a>
+      <a href="{{ url_for('main.work_history') }}">Work history</a>
+      <a href="{{ url_for('main.projects') }}">Projects</a>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {# This is where each page's content goes. Pages override this block. #}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    {# `now()` isn't a Jinja built-in — we'll inject it as a template global
+       later. For now, hard-code the year; we'll fix it in a later phase
+       as a lesson in template context processors. #}
+    <small>&copy; 2026 Anders Vestergaard</small>
+  </footer>
+</body>
+</html>

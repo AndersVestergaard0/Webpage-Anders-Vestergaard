@@ -1,0 +1,36 @@
+{# Work history page. Iterates over the `jobs` list passed in from the
+   view function in app/blueprints/main.py. #}
+{% extends "base.html" %}
+
+{% block title %}Work history — Anders Vestergaard{% endblock %}
+
+{% block content %}
+  <h1>Work history</h1>
+
+  {# `{% for ... %}` is Jinja's loop. Note `loop.last` is a free counter
+     Jinja gives you inside loops, useful if you want to omit a separator
+     after the last item. We don't need it here yet. #}
+  <ol class="job-list">
+    {% for job in jobs %}
+      <li class="job">
+        {# Auto-escaping is on by default. If `job.role` ever contained
+           something like <script>, it would render as text — not run. #}
+        <h2 class="job-role">{{ job.role }}</h2>
+        <p class="job-meta">
+          <span class="job-company">{{ job.company }}</span>
+          <span class="job-period">{{ job.period }}</span>
+        </p>
+
+        {# `{% if %}` skips the <img> entirely when image is None — cleaner
+           than emitting a broken <img src=""> tag. #}
+        {% if job.image %}
+          <img class="job-image"
+               src="{{ url_for('static', filename='img/' + job.image) }}"
+               alt="{{ job.company }} logo">
+        {% endif %}
+
+        <p class="job-summary">{{ job.summary }}</p>
+      </li>
+    {% endfor %}
+  </ol>
+{% endblock %}

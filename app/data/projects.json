@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Personal website",
+    "summary": "The site you're looking at. Built incrementally in Flask as a way to learn web development and practical security, from request/response basics through auth and deployment.",
+    "tags": ["Python", "Flask", "Jinja2", "Security"],
+    "repo_url": "https://github.com/your-handle/your-repo",
+    "live_url": null,
+    "image": null
+  },
+  {
+    "title": "Example second project",
+    "summary": "Replace this with one of your real projects. Keep summaries to one or two sentences — visitors scan, they don't read.",
+    "tags": ["Tag", "Another tag"],
+    "repo_url": null,
+    "live_url": "https://example.com",
+    "image": null
+  }
+]

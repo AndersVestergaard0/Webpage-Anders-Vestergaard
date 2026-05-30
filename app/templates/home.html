@@ -1,0 +1,25 @@
+{# Home page. Inherits everything from base.html and only fills in the
+   title and content blocks. #}
+{% extends "base.html" %}
+
+{% block title %}Anders Vestergaard — Home{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h1>Hi, I'm Anders.</h1>
+    <p class="lede">
+      A short one-liner about what you do. Replace this with your own
+      tagline — for example, "Software developer interested in security
+      and learning by building."
+    </p>
+  </section>
+
+  <section class="intro">
+    <h2>About</h2>
+    <p>
+      A paragraph or two introducing yourself. What you care about, what
+      kinds of problems you like to work on, what you're currently learning.
+      Keep it short — the navigation lets visitors dig deeper.
+    </p>
+  </section>
+{% endblock %}

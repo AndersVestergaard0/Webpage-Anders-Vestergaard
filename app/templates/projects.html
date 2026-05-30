@@ -1,0 +1,18 @@
+{# Projects page. Renders the list from app/data/projects.json. #}
+{% extends "base.html" %}
+
+{% block title %}Projects — Anders Vestergaard{% endblock %}
+
+{% block content %}
+  <h1>Projects</h1>
+
+  <ul class="project-list">
+    {% for project in projects %}
+      {# `{% include %}` injects another template's output here, with the
+         current context (including `project`) available inside. It's the
+         simplest way to factor out repeated markup. For more dynamic reuse
+         we'd use Jinja macros — we'll meet those if we need them. #}
+      {% include "_project_card.html" %}
+    {% endfor %}
+  </ul>
+{% endblock %}
